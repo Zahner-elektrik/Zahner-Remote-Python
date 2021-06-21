@@ -1,11 +1,10 @@
 ![Zahner-Remote-Python](http://zahner.de/documentation/github_resources/Zahner-Remote-Python.png)
 
-The repository Zahner-Remote-Python contains examples for using the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat) to control the [Zahner Potentiostats](http://zahner.de/products/external-potentiostats.html) **PP212, PP222, PP242 or XPOT2**.
+The repository Zahner-Remote-Python contains examples for using the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat) to control the [Zahner Potentiostats](http://zahner.de/products/external-potentiostats.html) **PP212, PP222, PP242 or a XPOT2**.
 
 The package was developed to **easily integrate** external Zahner Potentiostats into Python scripts for more **complex measurement** tasks and for **automation purposes**.
 
-The control concept is that there are different primitives which can be combined for different electrochemical measurement methods.  
-These primitives can all be configured differently to match the application. In the documentation of the respective function all possible configuration setter methods are listed.
+The control concept is that there are different primitives which can be combined for different electrochemical measurement methods. These primitives can all be configured differently to match the application. In the [API documentation](http://zahner.de/documentation/zahner_potentiostat/index.html) of the respective function all possible configuration setter methods are listed.
 
 **The following [primitives](https://en.wikipedia.org/wiki/Language_primitive) are available to compose methods with:**  
 * Potentiostatic or galvanostatic polarization  
@@ -117,6 +116,12 @@ If images or text files are saved from the examples, then they are located in th
 ### [PITTandGITT.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/PITTandGITT/PITTandGITT.ipynb)
 
 * Example of the composition of primitives for more complex measurement methods, with PITT and GITT as examples
+
+### [CoulombicEfficiency.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/CoulombicEfficiency/CoulombicEfficiency.ipynb)
+
+* Charging and discharging of a supercab with methods developed from primitives
+* Calculate the charge by integrating the current in Python
+* Display the charge efficiency depending on the current in a table with the corresponding charge and discharge voltage curves in a figure
 
 ### [ImpedanceMultiCellCycle.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/ImpedanceMultiCellCycle/ImpedanceMultiCellCycle.ipynb)
 

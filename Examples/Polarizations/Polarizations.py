@@ -107,7 +107,7 @@ if __name__ == '__main__':
 
     ZahnerPP2x2.setCoupling(COUPLING.GALVANOSTATIC)
 
-    ZahnerPP2x2.setMinimumVoltageParameter(0)
+    ZahnerPP2x2.setMinimumVoltageParameter(1)
     ZahnerPP2x2.setMaximumVoltageParameter(2)
     ZahnerPP2x2.setMinMaxVoltageParameterCheckEnabled(True)
 
