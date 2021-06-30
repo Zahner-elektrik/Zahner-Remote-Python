@@ -82,14 +82,14 @@ The following examples all build on each other, you should read and understand t
 
 If images or text files are saved from the examples, then they are located in the same directory.
 
-### [BasicIntroduction.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/BasicIntroduction/BasicIntroduction.ipynb)
+### [BasicIntroduction.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/BasicIntroduction/BasicIntroduction.ipynb)
 
 * Search devices automatically
 * Connect to a device
 * Perform measurements
 * Read and plot data
 
-### [Polarizations.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/Polarizations/Polarizations.ipynb)
+### [Polarizations.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/Polarizations/Polarizations.ipynb)
 
 * Perform offset calibration
 * Set the line frequency
@@ -98,38 +98,38 @@ If images or text files are saved from the examples, then they are located in th
 * Configure and use the open circuit scan primitive
 * Charge and discharge with the polarization primitive
 
-### [Ramps.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/Ramps/Ramps.ipynb)
+### [Ramps.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/Ramps/Ramps.ipynb)
 
 * Configure and use the ramps primitive
 * Start a primitive at open circuit voltage
 
-### [CurrentVoltageStepCurve.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/CurrentVoltageStepCurve/CurrentVoltageStepCurve.ipynb)
+### [CurrentVoltageStepCurve.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/CurrentVoltageStepCurve/CurrentVoltageStepCurve.ipynb)
 
 * Configure and use the staircase primitive
 * Plotting with a logarithmic current axis
 
-### [ArbitraryProfile.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/ArbitraryProfile/ArbitraryProfile.ipynb)
+### [ArbitraryProfile.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/ArbitraryProfile/ArbitraryProfile.ipynb)
 
 * Example of the composition of primitives for more complex measurement methods, with an arbitrary profile consisting of a sequence of primitives as example
 * Limiting the shunt area
 
-### [PITTandGITT.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/PITTandGITT/PITTandGITT.ipynb)
+### [PITTandGITT.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/PITTandGITT/PITTandGITT.ipynb)
 
 * Example of the composition of primitives for more complex measurement methods, with PITT and GITT as examples
 
-### [CoulombicEfficiency.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/CoulombicEfficiency/CoulombicEfficiency.ipynb)
+### [CoulombicEfficiency.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/CoulombicEfficiency/CoulombicEfficiency.ipynb)
 
 * Charging and discharging of a supercab with methods developed from primitives
 * Calculate the charge by integrating the current in Python
 * Display the charge efficiency depending on the current in a table with the corresponding charge and discharge voltage curves in a figure
 
-### [ImpedanceMultiCellCycle.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/ImpedanceMultiCellCycle/ImpedanceMultiCellCycle.ipynb)
+### [ImpedanceMultiCellCycle.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/ImpedanceMultiCellCycle/ImpedanceMultiCellCycle.ipynb)
 
 * Multichannel operation with multiple potentiostats
 * Shared [Zennium series](http://zahner.de/products/electrochemical-workstation.html) device for impedance measurements
 * Remote control of the Zennium with the [Thales-Remote-Python](https://github.com/Zahner-elektrik/Thales-Remote-Python) library
 
-This example needs the Python module [epc_scpi_handler.py](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/master/Examples/ImpedanceMultiCellCycle/epc_scpi_handler.py), which is also located in the folder.  
+This example needs the Python module [epc_scpi_handler.py](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/ImpedanceMultiCellCycle/epc_scpi_handler.py), which is also located in the folder.  
 This module contains the classes and methods needed for the example, which combine a zennium and an external potentiostat into one object.
 
 
