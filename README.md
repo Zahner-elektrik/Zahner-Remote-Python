@@ -1,38 +1,43 @@
-![Zahner-Remote-Python](http://zahner.de/documentation/github_resources/Zahner-Remote-Python.png)
+![Zahner-Remote-Python](https://doc.zahner.de/github_resources/Zahner-Remote-Python.png)
 
-The repository Zahner-Remote-Python contains examples for using the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat) to control the [Zahner Potentiostats](http://zahner.de/products/external-potentiostats.html) **PP212, PP222, PP242 or a XPOT2**.
+The repository Zahner-Remote-Python contains examples for using the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat) to control the [Zahner Potentiostats](https://zahner.de/products#external-potentiostats) **PP212, PP222, PP242 or a XPOT2**.
 
 The package was developed to **easily integrate** external Zahner Potentiostats into Python scripts for more **complex measurement** tasks and for **automation purposes**.
 
-The control concept is that there are different primitives which can be combined for different electrochemical measurement methods. These primitives can all be configured differently to match the application. In the [API documentation](http://zahner.de/documentation/zahner_potentiostat/index.html) of the respective function all possible configuration setter methods are listed.
+The control concept is that there are different primitives which can be combined for different electrochemical measurement methods. These primitives can all be configured differently to match the application. In the [API documentation](https://doc.zahner.de/zahner_potentiostat/index.html) of the respective function all possible configuration setter methods are listed.
 
 **The following [primitives](https://en.wikipedia.org/wiki/Language_primitive) are available to compose methods with:**  
 * Potentiostatic or galvanostatic polarization  
-  * [measurePolarization()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measurePolarization)  
+  * [measurePolarization()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measurePolarization)  
 * Open circuit voltage/potential scan  
-  * [measureOCV()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureOCV)  
-  * [measureOCVScan()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureOCVScan)  
+  * [measureOCV()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureOCV)  
+  * [measureOCVScan()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureOCVScan)  
 * Ramps potentiostatic or galvanostatic  
-  * [measureRampValueInTime()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureRampValueInTime)  
-  * [measureRampValueInScanRate()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureRampValueInScanRate)  
-  * [measureRampScanRateForTime()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureRampScanRateForTime)  
+  * [measureRampValueInTime()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureRampValueInTime)  
+  * [measureRampValueInScanRate()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureRampValueInScanRate)  
+  * [measureRampScanRateForTime()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureRampScanRateForTime)  
 * Staircase potentiostatic or galvanostatic  
-  * [measureIEStairs()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureIEStairs)  
+  * [measureIEStairs()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureIEStairs)  
   
 
 **And as an example, the following methods were developed from the primitives:**  
 * Charge or discharge something  
-  * [measureCharge()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureCharge)  
-  * [measureDischarge()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureDischarge)  
+  * [measureCharge()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureCharge)  
+  * [measureDischarge()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureDischarge)  
 * Output potentiostatic or galvanostatic profile as potentiostatic or galvanostatic polarizations or ramps  
-  * [measureProfile()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureProfile)  
+  * [measureProfile()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureProfile)  
 * PITT Potentiostatic Intermittent Titration Technique  
-  * [measurePITT()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measurePITT)  
+  * [measurePITT()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measurePITT)  
 * GITT Galvanostatic Intermittent Titration Technique  
-  * [measureGITT()](http://zahner.de/documentation/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureGITT)  
+  * [measureGITT()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureGITT)  
 
 This repository explains how to use the library with examples.
 These examples build on each other and you should start with the first one.
+
+# 📚 Documentation
+
+The complete documentation of the individual functions can be found on the [API documentation website](https://doc.zahner.de/zahner_potentiostat/).  
+
 
 # 🔧 Installation
 
@@ -126,7 +131,7 @@ If images or text files are saved from the examples, then they are located in th
 ### [ImpedanceMultiCellCycle.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/ImpedanceMultiCellCycle/ImpedanceMultiCellCycle.ipynb)
 
 * Multichannel operation with multiple potentiostats
-* Shared [Zennium series](http://zahner.de/products/electrochemical-workstation.html) device for impedance measurements
+* Shared [Zennium series](https://zahner.de/products#potentiostats) device for impedance measurements
 * Remote control of the Zennium with the [Thales-Remote-Python](https://github.com/Zahner-elektrik/Thales-Remote-Python) library
 
 This example needs the Python module [epc_scpi_handler.py](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/ImpedanceMultiCellCycle/epc_scpi_handler.py), which is also located in the folder.  

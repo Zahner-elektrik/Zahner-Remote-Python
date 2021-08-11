@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     onlineDisplay = None
     if executionInNotebook() == False:
-        onlineDisplay = OnlineDisplay(ZahnerXPOT2.getDataReceiver())
+        onlineDisplay = OnlineDisplay(ZahnerXPOT2.getDataReceiver(), displayConfiguration="UlogI")
 
     ZahnerXPOT2.setCoupling(COUPLING.POTENTIOSTATIC)
     ZahnerXPOT2.setVoltageRelation(RELATION.ZERO)
@@ -85,5 +85,4 @@ if __name__ == '__main__':
 
     if executionInNotebook() == True:
         notebookCodeToPython("CurrentVoltageStepCurve.ipynb")
-
 
