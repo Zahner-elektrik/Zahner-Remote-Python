@@ -5,7 +5,7 @@ from zahner_potentiostat.scpi_control.datahandler import DataManager
 from zahner_potentiostat.scpi_control.datareceiver import TrackTypes
 from zahner_potentiostat.display.onlinedisplay import OnlineDisplay
 
-from jupyter_utils import executionInNotebook, notebookCodeToPython
+from jupyter_utils import executionInNotebook
 if __name__ == '__main__':
     deviceSearcher = SCPIDeviceSearcher()
     deviceSearcher.searchZahnerDevices()
@@ -109,6 +109,7 @@ if __name__ == '__main__':
 
     ZahnerPP2x2.setMinimumVoltageParameter(1)
     ZahnerPP2x2.setMaximumVoltageParameter(2)
+    ZahnerPP2x2.setParameterLimitCheckToleranceTime(0.05)
     ZahnerPP2x2.setMinMaxVoltageParameterCheckEnabled(True)
 
     ZahnerPP2x2.setMaximumTimeParameter("30 s")
@@ -145,8 +146,4 @@ if __name__ == '__main__':
     
     ZahnerPP2x2.close()
     print("finish")
-
-    if executionInNotebook() == True:
-        notebookCodeToPython("Polarizations.ipynb")
-
 

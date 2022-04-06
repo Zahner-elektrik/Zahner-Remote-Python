@@ -5,7 +5,7 @@ from zahner_potentiostat.scpi_control.datahandler import DataManager
 from zahner_potentiostat.scpi_control.datareceiver import TrackTypes
 from zahner_potentiostat.display.onlinedisplay import OnlineDisplay
 
-from jupyter_utils import executionInNotebook, notebookCodeToPython
+from jupyter_utils import executionInNotebook
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import EngFormatter
@@ -43,6 +43,8 @@ if __name__ == '__main__':
     
     currentsInCycles = [2.5, 5, 7.5]
     cycles = len(currentsInCycles)
+
+    ZahnerPP2x2.setParameterLimitCheckToleranceTime(0.1)
 
     for i in range(cycles):
         print("cycle {} of {}".format(i+1, cycles))
@@ -160,7 +162,4 @@ if __name__ == '__main__':
     plt.show()
     
     figure.savefig("ChargingCycles.svg")
-
-    if executionInNotebook() == True:
-        notebookCodeToPython("CoulombicEfficiency.ipynb")
 

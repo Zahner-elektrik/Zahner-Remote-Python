@@ -7,7 +7,7 @@ from zahner_potentiostat.display.onlinedisplay import OnlineDisplay
 import threading
 from datetime import datetime
 
-from jupyter_utils import executionInNotebook, notebookCodeToPython
+from jupyter_utils import executionInNotebook
 
 def getFileName(channel,cycle):
     string = str(datetime.now().time())
@@ -19,6 +19,7 @@ def getFileName(channel,cycle):
 
 def channel1Thread(deviceHandler, channel = 0):
     deviceHandler.scpiInterface.setMaximumTimeParameter(15)
+    deviceHandler.scpiInterface.setParameterLimitCheckToleranceTime(0.1)
     
     for i in range(3):
         filename = getFileName(channel = channel, cycle = i)      
@@ -73,6 +74,7 @@ def channel1Thread(deviceHandler, channel = 0):
 
 def channel2Thread(deviceHandler):
     deviceHandler.scpiInterface.setMaximumTimeParameter(15)
+    deviceHandler.scpiInterface.setParameterLimitCheckToleranceTime(0.1)
     
     for i in range(2):
         filename = getFileName(channel = 2, cycle = i)
@@ -140,8 +142,4 @@ if __name__ == '__main__':
     
     handlerFactory.closeAll()
     print("finish")
-
-    if executionInNotebook() == True:
-        notebookCodeToPython("ImpedanceMultiCellCycle.ipynb")
-
 

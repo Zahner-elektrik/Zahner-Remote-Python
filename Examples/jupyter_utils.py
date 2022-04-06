@@ -4,7 +4,7 @@
   / /_/ _ `/ _ \/ _ \/ -_) __/___/ -_) / -_)  '_/ __/ __/ /  '_/
  /___/\_,_/_//_/_//_/\__/_/      \__/_/\__/_/\_\\__/_/ /_/_/\_\
 
-Copyright 2021 ZAHNER-elektrik I. Zahner-Schiller GmbH & Co. KG
+Copyright 2022 Zahner-Elektrik GmbH & Co. KG
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the "Software"),
@@ -23,41 +23,6 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
 THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 '''
-
-import json
-
-"""
-This module contains internally required functions to automatically convert Jupyter notebooks into
-pure python source code files. This way the user does not have to manually extract all the python
-code from the jupyter code blocks.
-
-Also a function has been implemented to detect if the source code is executed with python or in a
-jupyter environment.
-"""
-
-def notebookCodeToPython(jupyterNotebookName):
-    """ Convert jupyter-notebook to python.
-    
-    This function extracts all code lines from a jupyter notebook and saves them as a file.
-    With the standard jupyter export the whole documentation is inserted as a comment, but this is
-    not desired.
-    
-    The code is then saved to a .py file of equal name.
-    
-    :param jupyterNotebookName: The notebook file name.
-    """
-    notebookText = ""
-    with open(jupyterNotebookName, "r") as f:
-        notebookJson = json.load(f)
-        for cell in notebookJson["cells"]:
-            if "code" in cell["cell_type"]:
-                for line in cell["source"]:
-                    notebookText += line.rstrip("\n") + "\n"
-                notebookText += "\n"
-    
-    with open(jupyterNotebookName.replace("ipynb","py"),"wb") as f:
-        f.write(notebookText.encode(encoding="UTF-8"))
-    return
 
 def executionInNotebook():
     """ Check if the code is executed in jupyter enviroment.

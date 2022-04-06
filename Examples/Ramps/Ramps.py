@@ -5,7 +5,7 @@ from zahner_potentiostat.scpi_control.datahandler import DataManager
 from zahner_potentiostat.scpi_control.datareceiver import TrackTypes
 from zahner_potentiostat.display.onlinedisplay import OnlineDisplay
 
-from jupyter_utils import executionInNotebook, notebookCodeToPython
+from jupyter_utils import executionInNotebook
 if __name__ == '__main__':
     deviceSearcher = SCPIDeviceSearcher()
     deviceSearcher.searchZahnerDevices()
@@ -30,6 +30,8 @@ if __name__ == '__main__':
     ZahnerPP2x2.setMinimumVoltageGlobal(3.0)
     ZahnerPP2x2.setMaximumVoltageGlobal(4.25)
     ZahnerPP2x2.setGlobalVoltageCheckEnabled(True)
+    
+    ZahnerPP2x2.setGlobalLimitCheckToleranceTime(1)
 
     onlineDisplay = None
     if executionInNotebook() == False:
@@ -48,12 +50,13 @@ if __name__ == '__main__':
     BatteryC = 2.6
     ZahnerPP2x2.setMinimumCurrentParameter(-2.0 * BatteryC)
     ZahnerPP2x2.setMaximumCurrentParameter(1.0 * BatteryC)
+    ZahnerPP2x2.setParameterLimitCheckToleranceTime(0.5)
     ZahnerPP2x2.setMinMaxCurrentParameterCheckEnabled(True)
 
     ZahnerPP2x2.setScanRateParameter(0.010)
 
     ZahnerPP2x2.measureRampValueInScanRate(targetValue = 4.2)
-    ZahnerPP2x2.measureRampValueInScanRate(targetValue = -3.0)
+    ZahnerPP2x2.measureRampValueInScanRate(targetValue = 3.0)
 
     ZahnerPP2x2.setVoltageParameterRelation(RELATION.OCV)
 
@@ -68,8 +71,4 @@ if __name__ == '__main__':
     
     ZahnerPP2x2.close()
     print("finish")
-
-    if executionInNotebook() == True:
-        notebookCodeToPython("Ramps.ipynb")
-
 

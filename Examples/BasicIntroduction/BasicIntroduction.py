@@ -5,7 +5,7 @@ from zahner_potentiostat.scpi_control.datahandler import DataManager
 from zahner_potentiostat.scpi_control.datareceiver import TrackTypes
 from zahner_potentiostat.display.onlinedisplay import OnlineDisplay
 
-from jupyter_utils import executionInNotebook, notebookCodeToPython
+from jupyter_utils import executionInNotebook
 
 if __name__ == '__main__':
     deviceSearcher = SCPIDeviceSearcher()
@@ -52,8 +52,4 @@ if __name__ == '__main__':
     
     ZahnerPP2x2.close()
     print("finish")
-
-    if executionInNotebook() == True:
-        notebookCodeToPython("BasicIntroduction.ipynb")
-
 

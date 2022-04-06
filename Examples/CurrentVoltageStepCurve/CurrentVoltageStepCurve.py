@@ -6,7 +6,7 @@ from zahner_potentiostat.scpi_control.datareceiver import TrackTypes
 from zahner_potentiostat.display.dcplot import DCPlot
 from zahner_potentiostat.display.onlinedisplay import OnlineDisplay
 
-from jupyter_utils import executionInNotebook, notebookCodeToPython
+from jupyter_utils import executionInNotebook
 if __name__ == '__main__':
     deviceSearcher = SCPIDeviceSearcher()
     deviceSearcher.searchZahnerDevices()
@@ -37,6 +37,8 @@ if __name__ == '__main__':
     ZahnerXPOT2.setMinimumCurrentParameter(-0.5)
     ZahnerXPOT2.setMaximumCurrentParameter(+0.5)
     ZahnerXPOT2.setMinMaxCurrentParameterCheckEnabled(True)
+
+    ZahnerXPOT2.setParameterLimitCheckToleranceTime(0.1)
 
     ZahnerXPOT2.setAbsoluteTolerance(0.000)
     ZahnerXPOT2.setRelativeTolerance(0.001)
@@ -82,7 +84,4 @@ if __name__ == '__main__':
     
     ZahnerXPOT2.close()
     print("finish")
-
-    if executionInNotebook() == True:
-        notebookCodeToPython("CurrentVoltageStepCurve.ipynb")
 
