@@ -3,6 +3,7 @@ from epc_scpi_handler import EpcScpiHandlerFactory,EpcScpiHandler
 from thales_remote.script_wrapper import PotentiostatMode
 from zahner_potentiostat.scpi_control.datahandler import DataManager
 from zahner_potentiostat.display.onlinedisplay import OnlineDisplay
+from zahner_potentiostat.scpi_control.datareceiver import TrackTypes
 
 import threading
 from datetime import datetime
@@ -21,10 +22,20 @@ def channel1Thread(deviceHandler, channel = 0):
     deviceHandler.scpiInterface.setMaximumTimeParameter(15)
     deviceHandler.scpiInterface.setParameterLimitCheckToleranceTime(0.1)
     
+    configuration = {
+        "figureTitle":f"Online Display Channel 1",
+        "xAxisLabel":"Time",
+        "xAxisUnit":"s",
+        "xTrackName":TrackTypes.TIME.toString(),
+        "yAxis":
+            [{"label": "Voltage", "unit": "V", "trackName":TrackTypes.VOLTAGE.toString()},
+             {"label": "Current", "unit": "A", "trackName":TrackTypes.CURRENT.toString()}]
+    }
+    
     for i in range(3):
         filename = getFileName(channel = channel, cycle = i)      
 
-        onlineDisplay = OnlineDisplay(deviceHandler.scpiInterface.getDataReceiver())
+        onlineDisplay = OnlineDisplay(deviceHandler.scpiInterface.getDataReceiver(), displayConfiguration=configuration)
         
         deviceHandler.scpiInterface.measureOCVScan()
         
@@ -76,10 +87,20 @@ def channel2Thread(deviceHandler):
     deviceHandler.scpiInterface.setMaximumTimeParameter(15)
     deviceHandler.scpiInterface.setParameterLimitCheckToleranceTime(0.1)
     
+    configuration = {
+        "figureTitle":f"Online Display Channel 1",
+        "xAxisLabel":"Time",
+        "xAxisUnit":"s",
+        "xTrackName":TrackTypes.TIME.toString(),
+        "yAxis":
+            [{"label": "Voltage", "unit": "V", "trackName":TrackTypes.VOLTAGE.toString()},
+             {"label": "Current", "unit": "A", "trackName":TrackTypes.CURRENT.toString()}]
+    }
+    
     for i in range(2):
         filename = getFileName(channel = 2, cycle = i)
                
-        onlineDisplay = OnlineDisplay(deviceHandler.scpiInterface.getDataReceiver())
+        onlineDisplay = OnlineDisplay(deviceHandler.scpiInterface.getDataReceiver(), displayConfiguration=configuration)
         
         deviceHandler.scpiInterface.measureOCVScan()
         

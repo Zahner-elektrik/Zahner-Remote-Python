@@ -1,6 +1,6 @@
 ![Zahner-Remote-Python](https://doc.zahner.de/github_resources/Zahner-Remote-Python.png)
 
-The repository Zahner-Remote-Python contains examples for using the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat) to control the [Zahner Potentiostats](https://zahner.de/products#external-potentiostats) **PP212, PP222, PP242, XPOT2 or EL1002**.
+The repository Zahner-Remote-Python contains examples for using the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat) to control the [Zahner Potentiostats](https://zahner.de/products#external-potentiostats) **PP212, PP222, PP242 or a XPOT2**.
 
 The package was developed to **easily integrate** external Zahner Potentiostats into Python scripts for more **complex measurement** tasks and for **automation purposes**.
 
