@@ -1,5 +1,8 @@
 from zahner_potentiostat.scpi_control.searcher import SCPIDeviceSearcher
-from zahner_potentiostat.scpi_control.serial_interface import SerialCommandInterface, SerialDataInterface
+from zahner_potentiostat.scpi_control.serial_interface import (
+    SerialCommandInterface,
+    SerialDataInterface,
+)
 from zahner_potentiostat.scpi_control.control import *
 from zahner_potentiostat.scpi_control.datahandler import DataManager
 from zahner_potentiostat.scpi_control.datareceiver import TrackTypes
@@ -7,26 +10,31 @@ from zahner_potentiostat.display.dcplot import DCPlot
 from zahner_potentiostat.display.onlinedisplay import OnlineDisplay
 
 from jupyter_utils import executionInNotebook
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     deviceSearcher = SCPIDeviceSearcher()
     deviceSearcher.searchZahnerDevices()
     commandSerial, dataSerial = deviceSearcher.selectDevice()
-    ZahnerXPOT2 = SCPIDevice(SerialCommandInterface(commandSerial), SerialDataInterface(dataSerial))
+    ZahnerXPOT2 = SCPIDevice(
+        SerialCommandInterface(commandSerial), SerialDataInterface(dataSerial)
+    )
     ZahnerXPOT2.clearState()
 
     ZahnerXPOT2.setRaiseOnErrorEnabled(True)
     ZahnerXPOT2.calibrateOffsets()
     ZahnerXPOT2.setSamplingFrequency(50)
-    
+
     ZahnerXPOT2.setAutorangingEnabled(True)
     ZahnerXPOT2.setInterpolationEnabled(True)
-    
+
     ZahnerXPOT2.setShuntIndex(1)
     ZahnerXPOT2.setVoltageRangeIndex(0)
 
     onlineDisplay = None
     if executionInNotebook() == False:
-        onlineDisplay = OnlineDisplay(ZahnerXPOT2.getDataReceiver(), displayConfiguration="UlogI")
+        onlineDisplay = OnlineDisplay(
+            ZahnerXPOT2.getDataReceiver(), displayConfiguration="UlogI"
+        )
 
     ZahnerXPOT2.setCoupling(COUPLING.POTENTIOSTATIC)
     ZahnerXPOT2.setVoltageRelation(RELATION.ZERO)
@@ -43,7 +51,7 @@ if __name__ == '__main__':
     ZahnerXPOT2.setAbsoluteTolerance(0.000)
     ZahnerXPOT2.setRelativeTolerance(0.001)
     ZahnerXPOT2.setToleranceBreakEnabled(True)
-    
+
     ZahnerXPOT2.setMinimumTimeParameter(1)
     ZahnerXPOT2.setMaximumTimeParameter(10)
 
@@ -56,11 +64,17 @@ if __name__ == '__main__':
     dataManager = DataManager(dataReceiver)
     dataManager.plotTIUData()
 
-    completeData = dataReceiver.getCompletePoints() 
+    completeData = dataReceiver.getCompletePoints()
     voltageData = completeData[TrackTypes.VOLTAGE.toString()]
     currentData = completeData[TrackTypes.CURRENT.toString()]
-    
-    display = DCPlot("Current voltage curve", "Voltage", "V", [{"label": "Current", "unit": "A", "name": "Current", "log": True}],[voltageData, [currentData]])
+
+    display = DCPlot(
+        "Current voltage curve",
+        "Voltage",
+        "V",
+        [{"label": "Current", "unit": "A", "name": "Current", "log": True}],
+        [voltageData, [currentData]],
+    )
     display.savePlot("current_voltage_curve.pdf")
 
     dataReceiver.deletePoints()
@@ -81,7 +95,6 @@ if __name__ == '__main__':
 
     if onlineDisplay != None:
         onlineDisplay.close()
-    
+
     ZahnerXPOT2.close()
     print("finish")
-

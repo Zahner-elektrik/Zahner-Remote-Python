@@ -1,36 +1,42 @@
 from zahner_potentiostat.scpi_control.searcher import SCPIDeviceSearcher
-from zahner_potentiostat.scpi_control.serial_interface import SerialCommandInterface, SerialDataInterface
+from zahner_potentiostat.scpi_control.serial_interface import (
+    SerialCommandInterface,
+    SerialDataInterface,
+)
 from zahner_potentiostat.scpi_control.control import *
 from zahner_potentiostat.scpi_control.datahandler import DataManager
 from zahner_potentiostat.scpi_control.datareceiver import TrackTypes
 from zahner_potentiostat.display.onlinedisplay import OnlineDisplay
 
 from jupyter_utils import executionInNotebook
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     deviceSearcher = SCPIDeviceSearcher()
     deviceSearcher.searchZahnerDevices()
     commandSerial, dataSerial = deviceSearcher.selectDevice()
-    ZahnerPP2x2 = SCPIDevice(SerialCommandInterface(commandSerial), SerialDataInterface(dataSerial))
+    ZahnerPP2x2 = SCPIDevice(
+        SerialCommandInterface(commandSerial), SerialDataInterface(dataSerial)
+    )
     ZahnerPP2x2.clearState()
 
     ZahnerPP2x2.setRaiseOnErrorEnabled(True)
     ZahnerPP2x2.calibrateOffsets()
     ZahnerPP2x2.setSamplingFrequency(10)
-    
+
     ZahnerPP2x2.setAutorangingEnabled(True)
     ZahnerPP2x2.setInterpolationEnabled(True)
-    
+
     ZahnerPP2x2.setShuntIndex(1)
     ZahnerPP2x2.setVoltageRangeIndex(0)
 
     ZahnerPP2x2.setMinimumCurrentGlobal(-8)
     ZahnerPP2x2.setMaximumCurrentGlobal(4)
     ZahnerPP2x2.setGlobalCurrentCheckEnabled(True)
-    
+
     ZahnerPP2x2.setMinimumVoltageGlobal(3.0)
     ZahnerPP2x2.setMaximumVoltageGlobal(4.25)
     ZahnerPP2x2.setGlobalVoltageCheckEnabled(True)
-    
+
     ZahnerPP2x2.setGlobalLimitCheckToleranceTime(1)
 
     onlineDisplay = None
@@ -55,12 +61,12 @@ if __name__ == '__main__':
 
     ZahnerPP2x2.setScanRateParameter(0.010)
 
-    ZahnerPP2x2.measureRampValueInScanRate(targetValue = 4.2)
-    ZahnerPP2x2.measureRampValueInScanRate(targetValue = 3.0)
+    ZahnerPP2x2.measureRampValueInScanRate(targetValue=4.2)
+    ZahnerPP2x2.measureRampValueInScanRate(targetValue=3.2)
 
     ZahnerPP2x2.setVoltageParameterRelation(RELATION.OCV)
 
-    ZahnerPP2x2.measureRampValueInScanRate(targetValue =  0.0)
+    ZahnerPP2x2.measureRampValueInScanRate(targetValue=0.0)
 
     dataReceiver = ZahnerPP2x2.getDataReceiver()
     dataManager = DataManager(dataReceiver)
@@ -68,7 +74,6 @@ if __name__ == '__main__':
 
     if onlineDisplay != None:
         onlineDisplay.close()
-    
+
     ZahnerPP2x2.close()
     print("finish")
-

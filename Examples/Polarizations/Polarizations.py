@@ -1,17 +1,23 @@
 from zahner_potentiostat.scpi_control.searcher import SCPIDeviceSearcher
-from zahner_potentiostat.scpi_control.serial_interface import SerialCommandInterface, SerialDataInterface
+from zahner_potentiostat.scpi_control.serial_interface import (
+    SerialCommandInterface,
+    SerialDataInterface,
+)
 from zahner_potentiostat.scpi_control.control import *
 from zahner_potentiostat.scpi_control.datahandler import DataManager
 from zahner_potentiostat.scpi_control.datareceiver import TrackTypes
 from zahner_potentiostat.display.onlinedisplay import OnlineDisplay
 
 from jupyter_utils import executionInNotebook
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     deviceSearcher = SCPIDeviceSearcher()
     deviceSearcher.searchZahnerDevices()
     commandSerial, dataSerial = deviceSearcher.selectDevice()
 
-    ZahnerPP2x2 = SCPIDevice(SerialCommandInterface(commandSerial), SerialDataInterface(dataSerial))
+    ZahnerPP2x2 = SCPIDevice(
+        SerialCommandInterface(commandSerial), SerialDataInterface(dataSerial)
+    )
 
     ZahnerPP2x2.setRaiseOnErrorEnabled(True)
     ZahnerPP2x2.setSamplingFrequency(50)
@@ -22,22 +28,22 @@ if __name__ == '__main__':
 
     ZahnerPP2x2.setAutorangingEnabled(True)
     ZahnerPP2x2.setInterpolationEnabled(True)
-    
+
     ZahnerPP2x2.setShuntIndex(1)
-    #or
+    # or
     ZahnerPP2x2.setCurrentRange(20)
-    
+
     ZahnerPP2x2.setMinimumShuntIndex(1)
     ZahnerPP2x2.setMaximumShuntIndex(3)
 
     ZahnerPP2x2.setVoltageRangeIndex(0)
-    #or
+    # or
     ZahnerPP2x2.setVoltageRange(2.5)
 
     ZahnerPP2x2.setMinimumCurrentGlobal(-30)
     ZahnerPP2x2.setMaximumCurrentGlobal(30)
     ZahnerPP2x2.setGlobalCurrentCheckEnabled(True)
-    
+
     ZahnerPP2x2.setMinimumVoltageGlobal(0)
     ZahnerPP2x2.setMaximumVoltageGlobal(2.5)
     ZahnerPP2x2.setGlobalVoltageCheckEnabled(True)
@@ -67,13 +73,13 @@ if __name__ == '__main__':
     print("open circuit reference voltage: " + str(ZahnerPP2x2.measureOCV()) + " V")
 
     ZahnerPP2x2.setPotentiostatEnabled(True)
-    
-    ZahnerPP2x2.setVoltageParameter(0.1) #OCV + 0.1
+
+    ZahnerPP2x2.setVoltageParameter(0.1)  # OCV + 0.1
     ZahnerPP2x2.measurePolarization()
-    
-    ZahnerPP2x2.setVoltageParameter(0) #OCV
+
+    ZahnerPP2x2.setVoltageParameter(0)  # OCV
     ZahnerPP2x2.measurePolarization()
-    
+
     ZahnerPP2x2.setPotentiostatEnabled(False)
 
     dataReceiver = ZahnerPP2x2.getDataReceiver()
@@ -95,7 +101,7 @@ if __name__ == '__main__':
     ZahnerPP2x2.setMaximumTimeParameter("2 m")
 
     ZahnerPP2x2.setCurrentParameter(2)
-    ZahnerPP2x2.measurePolarization()    
+    ZahnerPP2x2.measurePolarization()
 
     ZahnerPP2x2.setCurrentParameter(-2)
     ZahnerPP2x2.measurePolarization()
@@ -143,7 +149,6 @@ if __name__ == '__main__':
 
     if onlineDisplay != None:
         onlineDisplay.close()
-    
+
     ZahnerPP2x2.close()
     print("finish")
-

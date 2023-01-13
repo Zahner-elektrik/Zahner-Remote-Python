@@ -128,14 +128,17 @@ If images or text files are saved from the examples, then they are located in th
 * Calculate the charge by integrating the current in Python
 * Display the charge efficiency depending on the current in a table with the corresponding charge and discharge voltage curves in a figure
 
-### [ImpedanceMultiCellCycle.ipynb](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/ImpedanceMultiCellCycle/ImpedanceMultiCellCycle.ipynb)
+## [ImpedanceMultiCellCycle.ipynb](https://github.com/Zahner-elektrik/Thales-Remote-Python/tree/main/Examples/ImpedanceMultiCellCycle/ImpedanceMultiCellCycle.ipynb)
 
-* Multichannel operation with multiple potentiostats
+* Multichannel operation with several external potentiostats, of the latest generation, type **PP2x2, XPOT2 or EL1002**
 * Shared [Zennium series](https://zahner.de/products#potentiostats) device for impedance measurements
-* Remote control of the Zennium with the [Thales-Remote-Python](https://github.com/Zahner-elektrik/Thales-Remote-Python) library
+* Operation of the power potentiostats standalone without thales with the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat)
 
-This example needs the Python module [epc_scpi_handler.py](https://github.com/Zahner-elektrik/Zahner-Remote-Python/blob/main/Examples/ImpedanceMultiCellCycle/epc_scpi_handler.py), which is also located in the folder.  
-This module contains the classes and methods needed for the example, which combine a zennium and an external potentiostat into one object.
+## [ImpedanceRampHotSwap.ipynb](https://github.com/Zahner-elektrik/Thales-Remote-Python/tree/main/Examples/ImpedanceRampHotSwap/ImpedanceRampHotSwap.ipynb)
+
+* Switch between Thales/EPC and SCPI/standalone operation of the external potentiostats (PP2x2, XPOT2 or EL1002) **without switching off the potentiostat**
+* Shared [Zennium series](https://zahner.de/products#potentiostats) device for impedance measurements
+* Operation of the power potentiostats standalone without thales with the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat)
 
 
 # 📧 Haveing a question?
