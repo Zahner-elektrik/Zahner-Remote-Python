@@ -1,12 +1,16 @@
 ![Zahner-Remote-Python](https://doc.zahner.de/github_resources/Zahner-Remote-Python.png)
 
-The repository Zahner-Remote-Python contains examples for using the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat) to control the [Zahner Potentiostats](https://zahner.de/products#external-potentiostats) **PP212, PP222, PP242, EL1002 or XPOT2**.
+The repository Zahner-Remote-Python contains examples for using the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat) to control the [Zahner Potentiostats](https://zahner.de/products#external-potentiostats) **PP212, PP222, PP242, EL1002 or XPOT2** via USB **without** a Zennium connected via EPC.
 
 The package was developed to **easily integrate** external Zahner Potentiostats into Python scripts for more **complex measurement** tasks and for **automation purposes**.
 
 The control concept is that there are different primitives which can be combined for different electrochemical measurement methods. These primitives can all be configured differently to match the application. In the [API documentation](https://doc.zahner.de/zahner_potentiostat/index.html) of the respective function all possible configuration setter methods are listed.
 
+> [!NOTE]  
+> **For this library, the computer must be connected to the PP212, PP222, PP242, EL1002 or XPOT2 via USB. These devices are then controlled directly via USB, without EPC and without Zennium. AC methods are not available with this library. For AC methods like EIS a [Zennium](https://zahner.de/products#potentiostats) with [EPC](https://zahner.de/products-details/addon-cards/epc42) and the [thales_remote](https://github.com/Zahner-elektrik/Thales-Remote-Python) library is necessary.**
+
 **The following [primitives](https://en.wikipedia.org/wiki/Language_primitive) are available to compose methods with:**  
+
 * Potentiostatic or galvanostatic polarization  
   * [measurePolarization()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measurePolarization)  
 * Open circuit voltage/potential scan  
@@ -19,8 +23,8 @@ The control concept is that there are different primitives which can be combined
 * Staircase potentiostatic or galvanostatic  
   * [measureIEStairs()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureIEStairs)  
   
-
 **And as an example, the following methods were developed from the primitives:**  
+
 * Charge or discharge something  
   * [measureCharge()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureCharge)  
   * [measureDischarge()](https://doc.zahner.de/zahner_potentiostat/scpi_control/control.html#zahner_potentiostat.scpi_control.control.SCPIDevice.measureDischarge)  
@@ -37,7 +41,6 @@ These examples build on each other and you should start with the first one.
 # 📚 Documentation
 
 The complete documentation of the individual functions can be found on the [API documentation website](https://doc.zahner.de/zahner_potentiostat/).  
-
 
 # 🔧 Installation
 
@@ -83,6 +86,7 @@ ZahnerPP2x2.measurePolarization()
 ```
 
 # 📖 Examples
+
 The following examples all build on each other, you should read and understand them in sequence.
 
 If images or text files are saved from the examples, then they are located in the same directory.
@@ -140,16 +144,17 @@ If images or text files are saved from the examples, then they are located in th
 * Shared [Zennium series](https://zahner.de/products#potentiostats) device for impedance measurements
 * Operation of the power potentiostats standalone without thales with the Python package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat)
 
+# 📧 Having a question?
 
-# 📧 Haveing a question?
 Send an <a href="mailto:support@zahner.de?subject=Zahner-Remote-Python Question&body=Your Message">e-mail</a> to our support team.
 
 # ⁉️ Found a bug or missing a specific feature?
+
 Feel free to **create a new issue** with a respective title and description on the the [Zahner-Remote-Python](https://github.com/Zahner-elektrik/Zahner-Remote-Python/issues) repository.  
 If you already found a solution to your problem, **we would love to review your pull request**!
 
 # ✅ Requirements
+
 Programming is done with the latest Python version at the time of commit.
 
 The package [zahner_potentiostat](https://github.com/Zahner-elektrik/zahner_potentiostat) is required for communication with the device. The packages matplotlib, scipy and numpy are used to display the measurement results. Jupyter is not necessary, since each example is also available as a Python file.
-
